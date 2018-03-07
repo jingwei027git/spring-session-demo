@@ -1,14 +1,13 @@
-import com.softpower.demo.springsession.util._Date;
-
-import java.time.LocalDateTime;
-import java.util.Optional;
+import com.softpower.demo.springsession.util._Crypto;
 
 public class test {
 
     public static void main(String[] args) {
-        final LocalDateTime expireDateTime = LocalDateTime.of(2018, 3, 7, 10, 20);
-        System.out.println(expireDateTime);
-        System.out.println(Optional.ofNullable(expireDateTime).filter(dateTime -> dateTime.isAfter(_Date.nowWithUTC())).isPresent());
+        System.out.println(_Crypto.BCrypt.encode("!softpower123"));
+        System.out.println(_Crypto.BCrypt.encode("11111"));
+        System.out.println(_Crypto.BCrypt.encode("12345"));
+        System.out.println(_Crypto.BCrypt.encode("13579"));
+        System.out.println(_Crypto.BCrypt.encode("2468a"));
     }
 
 }

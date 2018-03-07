@@ -9,12 +9,12 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Version;
+import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -22,6 +22,12 @@ import java.util.*;
 @Entity
 @Table(name = "user")
 public class User implements UserDetails {
+
+    /*
+     * DO NOT USE @SuppressWarnings("serial"),
+     * Spring session will persistence this object.
+     */
+    private static final long serialVersionUID = 1L;
 
     @Id
     private Long id;
@@ -32,6 +38,7 @@ public class User implements UserDetails {
 
     private LocalDateTime expireDateTime;
 
+    @Enumerated(EnumType.STRING)
     private YesNo status;
 
 
